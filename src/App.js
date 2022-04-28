@@ -4,17 +4,23 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 // Self-created
 import Users from './user/pages/Users';
 import NewPlace from './places/pages/NewPlace';
+import MainNavigation from './shared/components/Navigation/MainNavigation';
+import UserPlaces from './places/pages/UserPlaces';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Users />} />
-        <Route path='/places/new' element={<NewPlace />} />
-        <Route path='*' element={<Navigate to='/' />} />
-      </Routes>
+      <MainNavigation />
+      <main>
+        <Routes>
+          <Route path="/" element={<Users />} />
+          <Route path="/:userId/places" element={<UserPlaces />} />
+          <Route path="/places/new" element={<NewPlace />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </main>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default App;
